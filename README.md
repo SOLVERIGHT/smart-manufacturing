@@ -21,9 +21,9 @@ flowchart TB
 
     %% Lakehouse layer
     subgraph Lakehouse["Databricks Lakehouse"]
-        Bronze["Bronze Delta Tables<br/>Raw events"]
-        Silver["Silver Tables<br/>Cleaned manufacturing entities"]
-        Gold["Gold Tables<br/>OEE, KPIs, features"]
+        Bronze["Bronze<br/>Raw Data"]
+        Silver["Silver<br/>Cleaned Data"]
+        Gold["Gold<br/>KPI & Features"]
         FeatureStore["Feature Store"]
         MLflow["MLflow Model Registry"]
     end
