@@ -23,7 +23,7 @@ flowchart TB
     subgraph Lakehouse["Databricks Lakehouse"]
         Bronze["Bronze<br/>Raw Data"]
         Silver["Silver<br/>Cleaned Data"]
-        Gold["Gold<br/>KPI & Features"]
+        Gold["Gold<br/>KPIs / Features"]
         FeatureStore["Feature Store"]
         MLflow["MLflow Model Registry"]
     end
