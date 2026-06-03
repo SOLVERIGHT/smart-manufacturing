@@ -2,7 +2,8 @@
 
 ### OEE Analytics
 
-**Tech Stack:** Databricks, Delta Lake, Databricks SQL, Azure Event Hub
+**Tech Stack:** 
+- Databricks, Delta Lake, Databricks SQL, Azure Event Hub
 
 **Highlights:**
 - Built OEE analytics pipeline using Medallion Architecture
