@@ -13,7 +13,7 @@ flowchart TB
 
     %% Ingestion layer
     subgraph Ingestion["Ingestion Layer"]
-        Kafka["Kafka / Azure Event Hub"]
+        Kafka["Kafka / Event Hub"]
         ObjectStorage["Cloud Object Storage"]
         AutoLoader["Databricks Auto Loader"]
         Streaming["Structured Streaming"]
