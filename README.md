@@ -1,61 +1,50 @@
-# smart-manufacturing
+# OEE-Analytics
 
 ```mermaid
 flowchart TB
 
-    %% External factory systems
-    subgraph Factory["Factory"]
+    subgraph ShopFloor["Shop Floor"]
         Sensors["Sensors"]
         PLC["PLC / SCADA"]
         MES["MES"]
-        Cameras["Cameras"]
+        Quality["Quality Logs"]
+        Downtime["Downtime Logs"]
     end
 
-    %% Ingestion layer
-    subgraph Ingestion["Ingestion Layer"]
-        Kafka["Kafka / Event Hub"]
-        ObjectStorage["Cloud Object Storage"]
-        AutoLoader["Databricks Auto Loader"]
+    subgraph Ingestion["Ingestion"]
+        EventHub["Kafka/Event Hub"]
+        AutoLoader["Auto Loader"]
         Streaming["Structured Streaming"]
     end
 
-    %% Lakehouse layer
     subgraph Lakehouse["Databricks Lakehouse"]
-        Bronze["Bronze<br/>Raw Data"]
-        Silver["Silver<br/>Cleaned Data"]
-        Gold["Gold<br/>KPIs / Features"]
-        FeatureStore["Feature Store"]
-        MLflow["ML Registry"]
+        Bronze["Bronze<br/>Raw Events"]
+        Silver["Silver<br/>Production Data"]
+        Gold["Gold<br/>OEE Metrics"]
     end
 
-    %% Serving layer
-    subgraph Serving["Serving / Consumption"]
-        Dashboards["Databricks SQL / Power BI"]
-        Alerts["Alerts"]
-        ModelServing["Model Serving Endpoints"]
-        Apps["Manufacturing Apps / APIs"]
+    subgraph Analytics["Analytics"]
+        OEE["OEE Dashboard"]
+        DowntimeRpt["Downtime Analysis"]
+        YieldRpt["Yield Analysis"]
+        CapacityRpt["Capacity View"]
     end
 
-    Sensors --> Kafka
-    PLC --> Kafka
-    MES --> Kafka
-    Cameras --> ObjectStorage
+    Sensors --> EventHub
+    PLC --> EventHub
+    MES --> EventHub
+    Quality --> AutoLoader
+    Downtime --> AutoLoader
 
-    Kafka --> Streaming
-    ObjectStorage --> AutoLoader
-
-    Streaming --> Bronze
+    EventHub --> Streaming
     AutoLoader --> Bronze
+    Streaming --> Bronze
 
     Bronze --> Silver
     Silver --> Gold
-    Silver --> FeatureStore
 
-    FeatureStore --> MLflow
-    MLflow --> ModelServing
-
-    Gold --> Dashboards
-    Gold --> Alerts
-    ModelServing --> Apps
-    ModelServing --> Alerts
+    Gold --> OEE
+    Gold --> DowntimeRpt
+    Gold --> YieldRpt
+    Gold --> CapacityRpt
 ```
