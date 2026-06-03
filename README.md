@@ -4,7 +4,7 @@
 flowchart TB
 
     %% External factory systems
-    subgraph Factory["Factory / Shop Floor"]
+    subgraph Factory["Factory"]
         Sensors["Factory Sensors"]
         PLC["PLC / SCADA"]
         MES["MES"]
