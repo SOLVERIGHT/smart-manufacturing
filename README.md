@@ -1,5 +1,3 @@
-# OEE-Analytics
-
 ```mermaid
 flowchart TB
 
@@ -12,12 +10,12 @@ flowchart TB
     end
 
     subgraph Ingestion["Ingestion"]
-        EventHub["Kafka/Event Hub"]
+        EventHub["Kafka / Event Hub"]
         AutoLoader["Auto Loader"]
         Streaming["Structured Streaming"]
     end
 
-    subgraph Lakehouse["Databricks Lakehouse"]
+    subgraph Lakehouse["Lakehouse"]
         Bronze["Bronze<br/>Raw Events"]
         Silver["Silver<br/>Production Data"]
         Gold["Gold<br/>OEE Metrics"]
