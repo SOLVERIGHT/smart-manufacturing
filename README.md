@@ -5,10 +5,10 @@ flowchart TB
 
     %% External factory systems
     subgraph Factory["Factory"]
-        Sensors["Factory Sensors"]
+        Sensors["Sensors"]
         PLC["PLC / SCADA"]
         MES["MES"]
-        Cameras["Inspection Cameras"]
+        Cameras["Cameras"]
     end
 
     %% Ingestion layer
