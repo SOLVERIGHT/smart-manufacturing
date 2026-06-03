@@ -25,7 +25,7 @@ flowchart TB
         Silver["Silver<br/>Cleaned Data"]
         Gold["Gold<br/>KPIs / Features"]
         FeatureStore["Feature Store"]
-        MLflow["MLflow Model Registry"]
+        MLflow["ML Registry"]
     end
 
     %% Serving layer
