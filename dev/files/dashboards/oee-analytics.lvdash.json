@@ -1,0 +1,402 @@
+{
+  "datasets": [
+    {
+      "name": "07e2988d",
+      "displayName": "vw_downtime_by_equipment",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.default.vw_downtime_by_equipment",
+        "dimensions": [
+          {
+            "name": "equipment_id",
+            "expr": "source.equipment_id",
+            "displayName": "Equipment Id"
+          },
+          {
+            "name": "downtime_minutes",
+            "expr": "source.downtime_minutes",
+            "displayName": "Downtime Minutes"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "b70b5b6d",
+      "displayName": "vw_factory_summary",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.default.vw_factory_summary",
+        "dimensions": [
+          {
+            "name": "overall_quality_rate",
+            "expr": "source.overall_quality_rate",
+            "displayName": "Overall Quality Rate"
+          },
+          {
+            "name": "total_production",
+            "expr": "source.total_production",
+            "displayName": "Total Production"
+          },
+          {
+            "name": "total_defects",
+            "expr": "source.total_defects",
+            "displayName": "Total Defects"
+          },
+          {
+            "name": "total_downtime",
+            "expr": "source.total_downtime",
+            "displayName": "Total Downtime"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "f5dcfc07",
+      "displayName": "vw_production_by_line",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.default.vw_production_by_line",
+        "dimensions": [
+          {
+            "name": "line_id",
+            "expr": "source.line_id",
+            "displayName": "Line Id"
+          },
+          {
+            "name": "total_production",
+            "expr": "source.total_production",
+            "displayName": "Total Production"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "e085a4aa",
+      "displayName": "vw_quality_status",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.default.vw_quality_status",
+        "dimensions": [
+          {
+            "name": "equipment_id",
+            "expr": "source.equipment_id",
+            "displayName": "Equipment Id"
+          },
+          {
+            "name": "quality_pct",
+            "expr": "source.quality_pct",
+            "displayName": "Quality Pct"
+          },
+          {
+            "name": "status",
+            "expr": "source.status",
+            "displayName": "Status"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "4b2f7ac0",
+      "displayName": "Production Performance",
+      "layout": [
+        {
+          "widget": {
+            "name": "aee37a60",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "07e2988d",
+                  "fields": [
+                    {
+                      "name": "downtime_minutes",
+                      "expression": "`downtime_minutes`"
+                    },
+                    {
+                      "name": "equipment_id",
+                      "expression": "`equipment_id`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "downtime_minutes",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "equipment_id",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "c1fb3cf9",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f5dcfc07",
+                  "fields": [
+                    {
+                      "name": "line_id",
+                      "expression": "`line_id`"
+                    },
+                    {
+                      "name": "total_production",
+                      "expression": "`total_production`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "line_id",
+                    "contentAlignment": "center"
+                  },
+                  {
+                    "fieldName": "total_production",
+                    "contentAlignment": "center"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "1c66fd50",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b70b5b6d",
+                  "fields": [
+                    {
+                      "name": "overall_quality_rate",
+                      "expression": "`overall_quality_rate`"
+                    },
+                    {
+                      "name": "total_production",
+                      "expression": "`total_production`"
+                    },
+                    {
+                      "name": "total_defects",
+                      "expression": "`total_defects`"
+                    },
+                    {
+                      "name": "total_downtime",
+                      "expression": "`total_downtime`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showDescription": false,
+                "showTitle": false
+              },
+              "rowsPerPage": 25,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "overall_quality_rate",
+                    "contentAlignment": "center"
+                  },
+                  {
+                    "fieldName": "total_production",
+                    "contentAlignment": "center"
+                  },
+                  {
+                    "fieldName": "total_defects",
+                    "contentAlignment": "center"
+                  },
+                  {
+                    "fieldName": "total_downtime",
+                    "contentAlignment": "center"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 4,
+            "width": 8,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "52160dfc",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e085a4aa",
+                  "fields": [
+                    {
+                      "name": "equipment_id",
+                      "expression": "`equipment_id`"
+                    },
+                    {
+                      "name": "quality_pct",
+                      "expression": "`quality_pct`"
+                    },
+                    {
+                      "name": "status",
+                      "expression": "`status`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "equipment_id",
+                    "contentAlignment": "center"
+                  },
+                  {
+                    "fieldName": "quality_pct",
+                    "contentAlignment": "center"
+                  },
+                  {
+                    "fieldName": "status",
+                    "contentAlignment": "center",
+                    "style": {
+                      "type": "basic",
+                      "backgroundColor": {
+                        "themeColorType": "widgetBackgroundColor"
+                      },
+                      "foregroundColor": {
+                        "themeColorType": "visualizationColors",
+                        "position": 3
+                      },
+                      "rules": [
+                        {
+                          "condition": {
+                            "operand": {
+                              "type": "data-value",
+                              "value": "PASS"
+                            },
+                            "operator": "="
+                          },
+                          "bold": true,
+                          "foregroundColor": {
+                            "themeColorType": "visualizationColors",
+                            "position": 3
+                          }
+                        },
+                        {
+                          "condition": {
+                            "operand": {
+                              "type": "data-value",
+                              "value": "FAIL"
+                            },
+                            "operator": "="
+                          },
+                          "bold": true,
+                          "foregroundColor": {
+                            "themeColorType": "visualizationColors",
+                            "position": 4
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 4
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
