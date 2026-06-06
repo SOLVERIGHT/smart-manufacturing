@@ -1,9 +1,0 @@
-event_ts,line_id,equipment_id,downtime_type,reason,duration_minutes
-2025/1/1 08:45,LINE_A,M001,UNPLANNED,Sensor Fault,12
-2025/1/1 10:05,LINE_A,M002,PLANNED,Changeover,20
-2025/1/1 11:40,LINE_B,M003,UNPLANNED,Jam,15
-2025/1/1 14:10,LINE_B,M004,UNPLANNED,Operator Issue,8
-2025/1/2 09:00,LINE_A,M001,PLANNED,Maintenance,30
-2025/1/2 10:15,LINE_A,M002,UNPLANNED,Material Shortage,18
-2025/1/2 12:20,LINE_B,M003,UNPLANNED,Motor Fault,25
-2025/1/2 15:10,LINE_B,M004,PLANNED,Cleaning,10
