@@ -9,10 +9,10 @@
 - Developed Databricks SQL dashboards for production monitoring
 - Automated ETL with Delta Lake
   
-### Dashboard Preview
+### 🟢 Dashboard Preview
 <img width="1181" height="735" alt="image" src="https://github.com/user-attachments/assets/284732f5-14db-418f-82e6-290f24ca09e6" />
 
-### Solution Architecture
+### 🟢 Solution Architecture
 ```mermaid
 flowchart TB
 
