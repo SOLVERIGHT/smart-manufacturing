@@ -21,7 +21,7 @@ flowchart TB
         KEP["Kepware"]
     end
 
-    subgraph Ingestion["Streaming Ingestion"]
+    subgraph Ingestion[" "]
         EH["Azure Event Hub"]
         STREAM["Databricks Structured Streaming"]
     end
