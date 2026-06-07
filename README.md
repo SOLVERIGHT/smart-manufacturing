@@ -16,48 +16,39 @@
 ```mermaid
 flowchart TB
 
-    subgraph ShopFloor["Shop Floor"]
-        Sensors["Sensors"]
-        PLC["PLC / SCADA"]
-        MES["MES"]
-        Quality["Quality Logs"]
-        Downtime["Downtime Logs"]
+    subgraph OT["Operational Technology"]
+        OPC["OPC UA Simulator"]
+        KEP["Kepware"]
     end
 
-    subgraph Ingestion["Ingestion"]
-        EventHub["Kafka / Event Hub"]
-        AutoLoader["Auto Loader"]
-        Streaming["Structured Streaming"]
+    subgraph Ingestion["Streaming Ingestion"]
+        EH["Azure Event Hub"]
+        STREAM["Databricks Structured Streaming"]
     end
 
-    subgraph Lakehouse["Lakehouse"]
-        Bronze["Bronze<br/>Raw Events"]
-        Silver["Silver<br/>Production Data"]
-        Gold["Gold<br/>OEE Metrics"]
+    subgraph Lakehouse["Databricks Lakehouse"]
+        Bronze["Bronze<br/>Raw Telemetry"]
+        Silver["Silver<br/>Curated Telemetry"]
+        Gold["Gold<br/>Production KPIs"]
     end
 
     subgraph Analytics["Analytics"]
         OEE["OEE Dashboard"]
-        DowntimeRpt["Downtime Analysis"]
-        YieldRpt["Yield Analysis"]
-        CapacityRpt["Capacity View"]
+        Downtime["Downtime Analysis"]
+        Throughput["Throughput Metrics"]
+        Quality["Quality KPIs"]
     end
 
-    Sensors --> EventHub
-    PLC --> EventHub
-    MES --> EventHub
-    Quality --> AutoLoader
-    Downtime --> AutoLoader
+    OPC --> KEP
+    KEP --> EH
+    EH --> STREAM
 
-    EventHub --> Streaming
-    AutoLoader --> Bronze
-    Streaming --> Bronze
-
+    STREAM --> Bronze
     Bronze --> Silver
     Silver --> Gold
 
     Gold --> OEE
-    Gold --> DowntimeRpt
-    Gold --> YieldRpt
-    Gold --> CapacityRpt
+    Gold --> Downtime
+    Gold --> Throughput
+    Gold --> Quality
 ```
