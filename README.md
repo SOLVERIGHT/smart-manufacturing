@@ -3,6 +3,7 @@
 ### Tech Stack
 - Databricks, Delta Lake, Databricks SQL, Azure Event Hub
 <hr>
+
 ### Highlights
 - Built OEE analytics pipeline using Medallion Architecture
 - Calculated Availability, Performance, and Quality KPIs
