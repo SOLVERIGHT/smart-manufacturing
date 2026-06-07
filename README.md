@@ -1,18 +1,18 @@
-## 🚀 Smart Factory
+## 🚀 Smart Factory OEE Analytics
 
-### Tech Stack: 
+### Tech Stack
 - Databricks, Delta Lake, Databricks SQL, Azure Event Hub
 
-### Highlights:
+### Highlights
 - Built OEE analytics pipeline using Medallion Architecture
 - Calculated Availability, Performance, and Quality KPIs
 - Developed Databricks SQL dashboards for production monitoring
 - Automated ETL with Delta Lake
   
-### Dashboard Preview:
+### Dashboard Preview
 <img width="1181" height="735" alt="image" src="https://github.com/user-attachments/assets/284732f5-14db-418f-82e6-290f24ca09e6" />
 
-### Flowchart:
+### Solution Architecture
 ```mermaid
 flowchart TB
 
