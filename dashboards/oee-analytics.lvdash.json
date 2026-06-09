@@ -269,7 +269,15 @@
                 "columns": [
                   {
                     "fieldName": "overall_quality_rate",
-                    "contentAlignment": "center"
+                    "contentAlignment": "center",
+                    "format": {
+                      "type": "number-percent",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 2
+                      },
+                      "hideGroupSeparator": true
+                    }
                   },
                   {
                     "fieldName": "total_production",
@@ -331,7 +339,16 @@
                   },
                   {
                     "fieldName": "quality_pct",
-                    "contentAlignment": "center"
+                    "contentAlignment": "center",
+                    "format": {
+                      "type": "number-plain",
+                      "abbreviation": "none",
+                      "decimalPlaces": {
+                        "type": "exact",
+                        "places": 2
+                      },
+                      "hideGroupSeparator": true
+                    }
                   },
                   {
                     "fieldName": "status",
